@@ -1,0 +1,20 @@
+.s1 {
+    color: red;
+    font-size: 40px;
+    font-weight: 800;
+}
+
+.btn {
+    font-size: 22px;
+    font-weight: 600;
+    width: 100px;
+}
+
+.center {
+    text-align: center;
+}
+
+.center-2 {
+    display: flex;
+    justify-content: center;
+}
