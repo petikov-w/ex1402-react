@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import PostList  from './lessons/lesson_3';
-import  Timer from './lessons/lesson_2';
+// import Count from './lessons/lesson_1'
+// import Timer from './lessons/lesson_2';
+// import PostList  from './lessons/lesson_3';
+import {SubscriptionForm}  from './lessons/lesson_4';
+
+
 
 class App extends Component {
     render() {
-        const { posts } = this.state;
         return (
-          <Timer />
+            <div>
+                <SubscriptionForm></SubscriptionForm>
+            </div>
         );
     }
 }
