@@ -10,12 +10,14 @@ class SubscriptionForm extends React.Component {
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value})
     }
-
-
     handleCheckboxChange = (event) => {
         this.setState({[event.target.name]: event.target.checked})
     }
 
+    validateAgreeWithTerms = () => {
+        if(this.state.isAgreeWithTerms===true) alert("Спасибо за подписку!!!")
+        else alert('Вы не приняли условия подписки!')
+    }
     render() {
         const { email, name, isAgreeWithTerms } = this.state;
 
@@ -49,7 +51,8 @@ class SubscriptionForm extends React.Component {
                     Я согласен с условиями
                 </label>
                 <br />
-                <button>Отправить</button>
+                <button
+                onClick={this.validateAgreeWithTerms}>Отправить</button>
             </div>
         );
     }
