@@ -5,6 +5,7 @@ class SubscriptionForm extends React.Component {
         email: '',
         name: '',
         isAgreeWithTerms: false,
+        isValidEmails: false
     };
 
     handleChange = (event) => {
@@ -16,6 +17,22 @@ class SubscriptionForm extends React.Component {
 
     validateAgreeWithTerms = () => {
         if(this.state.isAgreeWithTerms===true) alert("Спасибо за подписку!!!")
+        else alert('Вы не приняли условия подписки!')
+    }
+    validateEmail = () => {
+        const isValidEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+            this.state.email.toLocaleLowerCase()
+        );
+        if(!isValidEmail) {
+            this.setState({isValidEmails: false})
+            alert("Вы ввели неправильный адрес!")
+        } else {
+            this.setState({isValidEmails: true})
+        }
+    }
+
+    validateSubmit = () => {
+        if(this.state.isValidEmails && this.state.isAgreeWithTerms) alert("Спасибо за подписку!!!")
         else alert('Вы не приняли условия подписки!')
     }
     render() {
@@ -39,6 +56,7 @@ class SubscriptionForm extends React.Component {
                     placeholder="введите email"
                     value={email}
                     onChange={this.handleChange}
+                    onBlur={this.validateEmail}
                 />
                 <br />
                 <label>
@@ -52,7 +70,7 @@ class SubscriptionForm extends React.Component {
                 </label>
                 <br />
                 <button
-                onClick={this.validateAgreeWithTerms}>Отправить</button>
+                onClick={this.validateSubmit}>Отправить</button>
             </div>
         );
     }
